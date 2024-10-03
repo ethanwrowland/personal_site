@@ -1,0 +1,251 @@
+/*overall stuff*/
+:root{
+    --main-text-color: rgb(255, 255, 255);
+    --main-background-color: rgb(0,0,0);
+    --purple-i-like: rgb(139, 57, 149);
+    --main-border-color: rgba(0,0,255);
+    --big-text-color: rgb(50, 231, 168);
+    --hover-color: blue;
+    --nice-pink: rgb(201, 137, 209);
+
+
+}
+*{
+    margin:0;
+    padding:0;
+    font-family: Georgia, 'Times New Roman', Times, serif, Tahoma, sans-serif;
+}
+
+main,
+article,
+section,
+aside,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav {
+    padding: 1%;
+}
+
+html{
+    background-color: var(--main-background-color);
+    color: var(--main-text-color);
+    
+}
+
+/*wide reaching rules*/
+body{
+    width: 95%;
+    max-width: 60em;
+    margin: 1% auto;
+    display: grid;
+    grid-template-areas: "header" "nav" "main" "footer";
+}
+
+h1,
+h2{
+    color: var(--big-text-color);
+    text-transform: uppercase;
+    font-style: italic;
+    padding: 1%;
+}
+p{
+    text-indent: 2em;
+    padding: 1em;
+}
+a{
+    color:var(--nice-pink);
+}
+a:hover{
+    color: var(--hover-color);
+    text-shadow: 0 0 2% white;
+}
+
+/*rules for main, headder, footer*/
+main{
+    /*
+    background-color: var(--main-block-color); 
+    i like it better without ngl*/
+    /*general layout*/
+    grid-area: main;
+    display: grid;
+    grid-gap: 1% 
+}
+main.index{
+    /*layout for the index page... ik we are supposed to have the same for all but my index page and detail page have pretty different content formats*/
+    grid-template-areas:"box-1 box-1" "box-2 box-2" "box-3 box-4";
+
+}
+main.detail{
+    grid-template-areas:"box-1 box-1" "box-2 gallery" "box-3 gallery" "box-4 gallery";
+}
+main.form{
+    grid-template-areas:"gallery box-1";
+    grid-template-columns: 40% auto;
+}
+nav,
+footer{
+    background-color: var(--main-background-color);
+    border-bottom: .1em dotted var(--purple-i-like);
+    border-top: .1em dotted var(--purple-i-like);
+    padding: 1%;
+    text-align: center;
+}
+nav{
+    grid-area: nav;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    font-style: oblique;
+    font-variant: small-caps;
+}
+nav a{
+    padding: 3%;
+    /*background:radial-gradient(rgb(241, 75, 75),black 70%);*/
+    color: var(--link-color);
+    border: .2em double var(--purple-i-like);
+}
+nav a:hover{
+    text-decoration: underline;
+    /*background:radial-gradient(rgb(241, 75, 75),white 70%);*/
+    color:var(--big-text-color);
+    border: .2em solid var(--purple-i-like);
+
+}
+nav a.activePage{
+    color: var(--big-text-color);  
+}
+footer{
+    margin-top: 5%;
+}
+
+/*setting up the layout stuff*/
+section{
+    display: block;
+}
+.box-1{
+    grid-area:box-1;
+}
+.box-2{
+    grid-area:box-2;
+}
+.box-3{
+    grid-area:box-3;
+}
+.box-4{
+    grid-area:box-4;
+}
+.gallery{
+    grid-area:gallery;
+    display: grid;
+    grid-template-columns: auto;
+}
+
+/*table and list rules*/
+table{
+    width: 80%;
+    margin-left:auto;
+    margin-right:auto;
+    border-collapse: collapse;
+}
+table caption{
+    padding-top: 1em;
+}
+tr.headder{
+    padding: 1em;
+}
+tr.headder th{
+    font-variant: small-caps;
+}
+td,
+th{
+    border: .1em solid var(--main-text-color);
+    padding: .1em;
+}
+li{
+    padding: 1%;
+}
+li:nth-child(odd),
+tr:nth-child(odd){ 
+    background-color: rgba(233, 214, 236, .3);
+}
+li:nth-child(even),
+tr:nth-child(even){ 
+    background-color: rgba(31, 51, 37,.2);
+}
+cite{
+    font-size: xx-small;
+}
+
+tr:hover,
+li:hover{
+    background-color: rgb(139, 57, 149,.3)
+}
+/*figure and image rules*/
+figure{
+    text-align: center; 
+    /*border-radius: 5%;*/
+    padding: 0%;
+}
+form img{
+    padding: 2%;
+    height: 5em;
+}
+img{
+    max-width: 100%;
+    box-shadow: 0 0 3em var(--nice-pink);
+    border: .1em double var(--big-text-color);
+}
+figure figcaption{
+    color: var(--nice-pink);
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+/*rules mainly for form stuff*/
+label{
+    display: inline-block;
+    text-indent: 0em;
+}
+fieldset p{
+    padding: .1em;
+}
+fieldset.open-ended label{
+    width: 8em;
+}
+input[type=submit]{
+    width: 20em;
+    background-color: var(--big-text-color);
+    color: black;
+    padding: 1em;
+    border: 1em double var(--purple-i-like);
+}
+input[type=text], input[type=email], input[type=date], input[type=time], input[type=number] {
+    width: auto;
+    height: auto;
+    border: .5em double var(--nice-pink);
+}
+input:invalid {
+    border: .5em solid red;
+}
+
+input[type=checkbox] + label{
+    cursor: pointer;   
+}
+input[type=checkbox]:checked + label{
+    color: var(--big-text-color);
+    box-shadow: 0 0 1em var(--nice-pink);    
+}
+
+input[type=radio] + label {
+    cursor: pointer;
+}
+input[type=radio]:checked + label{
+    color: var(--big-text-color);
+    box-shadow: 0 0 1em var(--nice-pink);
+}
+legend{
+    color: var(--big-text-color);
+}
